@@ -3,7 +3,7 @@ package com.sai.samithi.pages.contact;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Objects;
+import java.util.Date;
 
 @Builder @Data
 @NoArgsConstructor @AllArgsConstructor
@@ -12,7 +12,7 @@ public class Contact {
 
     @Id
     @SequenceGenerator(name="contact_seq_gen", sequenceName = "contact_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contactus_seq_gen")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contact_seq_gen")
     @Setter(AccessLevel.NONE)
     private Long id;
 
@@ -25,5 +25,7 @@ public class Contact {
     private String subject;
 
     private String message;
+
+    private Date createdAt;
 
 }
