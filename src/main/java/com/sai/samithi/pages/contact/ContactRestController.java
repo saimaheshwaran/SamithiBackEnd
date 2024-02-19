@@ -1,5 +1,6 @@
 package com.sai.samithi.pages.contact;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 public class ContactRestController {
 
@@ -18,7 +20,7 @@ public class ContactRestController {
 
     @PostMapping("/contact/save")
     public ResponseEntity<Contact> saveContact(@RequestBody Contact contact) {
-        return new ResponseEntity<Contact>(contactService.add(contact), HttpStatus.OK);
+        return new ResponseEntity<>(contactService.add(contact), HttpStatus.OK);
     }
 
     @GetMapping("/contact/getall")
