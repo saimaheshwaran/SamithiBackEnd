@@ -3,16 +3,16 @@ package com.sai.samithi.pages.contact;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import org.springframework.data.annotation.CreatedDate;
 
-@Builder @Data
-@NoArgsConstructor @AllArgsConstructor
+@Data
+@Builder
 @Entity
 public class Contact {
 
     @Id
-    @SequenceGenerator(name="contact_seq_gen", sequenceName = "contact_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contact_seq_gen")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Setter(AccessLevel.NONE)
     private Long id;
 
@@ -25,7 +25,9 @@ public class Contact {
     private String subject;
 
     private String message;
+    
+    private Status status; 
 
-    private Date createdAt;
-
+    @CreatedDate
+    private LocalDateTime createdDate;
 }
