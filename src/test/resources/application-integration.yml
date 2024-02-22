@@ -1,0 +1,42 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: sai-samithi-karanai
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: ''
+    url: jdbc:h2:mem:samithi-test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    password: ''
+  h2:
+    console:
+      enabled: 'true'
+  #sql:
+    #init:
+     # mode: always
+     # schema-locations: classpath:schema-test.sql
+  jpa:
+    properties:
+      hibernate:
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+    generate-ddl: true
+logging:
+  level:
+    sql: DEBUG
+
+server:
+  port: 8095
+management:
+  server:
+    port: 8096
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  health:
+    livenessState:
+      enabled: true
+ 

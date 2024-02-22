@@ -1,4 +1,4 @@
-package com.sai.samithi.pages.contact;
+package com.sai.samithi.contact;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.sai.samithi.pages.contact;
+package com.sai.samithi.contact;
 
 
 import com.sai.samithi.util.validator.annotation.Phone;

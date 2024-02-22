@@ -1,4 +1,4 @@
-package com.sai.samithi.pages.contact;
+package com.sai.samithi.contact;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,8 +12,8 @@ import org.springframework.data.annotation.CreatedDate;
 public class Contact {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Setter(AccessLevel.NONE)
+    @SequenceGenerator(name="contact_seq_gen", sequenceName = "contact_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contact_seq_gen")
     private Long id;
 
     private String name;
