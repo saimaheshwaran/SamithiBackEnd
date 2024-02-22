@@ -19,11 +19,13 @@ public class ContactService {
     	Contact contactDB = Contact.builder()
     	.name(contactDto.name())
     	.message(contactDto.message())
-    	.phone(contactDto.phone())
+    	.phone(contactDto.phoneNumber())
     	.email(contactDto.email())
     	.subject(contactDto.subject())
     	.status(Status.TBD)
     	.build();
+    	
+    	contactRepository.save(contactDB);
     	
         return contactRepository.save(contactDB);
     }

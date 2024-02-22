@@ -18,7 +18,7 @@ public record ContactDTO(
 	
 	@NonNull
 	@Phone
-	String phone, 
+	String phoneNumber, 
 	
 	@NonNull
 	String subject, 

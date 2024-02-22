@@ -5,10 +5,14 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 
 @Data
 @Builder
 @Entity
+@EntityListeners(AuditingEntityListener.class)
+
 public class Contact {
 
     @Id
