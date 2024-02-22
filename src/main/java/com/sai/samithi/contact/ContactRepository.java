@@ -1,4 +1,4 @@
-package com.sai.samithi.pages.contact;
+package com.sai.samithi.contact;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
