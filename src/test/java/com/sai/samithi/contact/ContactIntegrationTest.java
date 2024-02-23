@@ -45,34 +45,58 @@ public class ContactIntegrationTest {
 	}
 	
 	@Test
-	public void whenValidContactIsGivenCreateSuccess() throws Exception {
+	public void whenValidContactIsGivenExpectCreateSuccess() throws Exception {
 		//When
-		ContactDTO  contactDto = ContactDTO.builder()
+		ContactRequest  contactRequest = ContactRequest.builder()
 				.message("When is next Bhajan Day ?")
 				.name("Sai")
 				.subject("Rg: Bhajan")
 				.email("member@gmail.com")
 				.phoneNumber("7832438265")
 				.build();
+		
 		//Given
 		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders
 				.post("/contact")
-				.content(objectMapper.writeValueAsString(contactDto))
+				.content(objectMapper.writeValueAsString(contactRequest))
 				.contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON))
 			.andDo(print())
 			.andExpect(status().isOk())
 			.andReturn();
 		String responseString = mvcResult.getResponse().getContentAsString();
-		Contact actualResponse = objectMapper.readValue(responseString, Contact.class);
+		ContactResponse actualResponse = objectMapper.readValue(responseString, ContactResponse.class);
 		JsonNode expectedResponseNode = objectMapper.readTree(createSuccessResponse.getContentAsByteArray()); 
 		String expectedResString = expectedResponseNode.toString();
-		ContactDTO expectedResponse = objectMapper.readValue(expectedResString, ContactDTO.class);
+		ContactRequest expectedResponse = objectMapper.readValue(expectedResString, ContactRequest.class);
+		
 		//Then
 		assertThat(expectedResponse.name().equals(actualResponse.getName()));
 		assertThat(expectedResponse.email().equals(actualResponse.getEmail()));
 		assertThat(expectedResponse.message().equals(actualResponse.getMessage()));
 		assertThat(expectedResponse.subject().equals(actualResponse.getSubject()));
+
+	}
+
+	@Test
+	public void whenInValidContactIsGivenExpectBadRequest() throws Exception {
+		//When
+		ContactRequest  contactDto = ContactRequest.builder()
+				.message("When is next Bhajan Day ?")
+				.name("Sai")
+				.subject("Rg: Bhajan")
+				.email("member@gmail.com")
+				.phoneNumber("hello")
+				.build();
+		//Given and Then
+		mockMvc.perform(MockMvcRequestBuilders
+				.post("/contact")
+				.content(objectMapper.writeValueAsString(contactDto))
+				.contentType(MediaType.APPLICATION_JSON)
+				.accept(MediaType.APPLICATION_JSON))
+			.andDo(print())
+			.andExpect(status().isBadRequest())
+			.andReturn();
 
 	}
 
