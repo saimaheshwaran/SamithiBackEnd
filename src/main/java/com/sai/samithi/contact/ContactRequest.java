@@ -8,7 +8,7 @@ import lombok.Builder;
 import lombok.NonNull;
 
 @Builder
-public record ContactDTO(
+public record ContactRequest(
 	@NonNull
 	String name, 
 	
@@ -18,7 +18,7 @@ public record ContactDTO(
 	
 	@NonNull
 	@Phone
-	String phone, 
+	String phoneNumber, 
 	
 	@NonNull
 	String subject, 
