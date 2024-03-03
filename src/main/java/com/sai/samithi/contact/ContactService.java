@@ -6,6 +6,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 
 @NoArgsConstructor
 @Service
@@ -33,6 +34,10 @@ public class ContactService {
     	mapper.map(contact, ContactResponse.class);
         return mapper.map(contact, ContactResponse.class);
     }
+
+	public List<Contact> getAll() {
+		return contactRepository.findAll();
+	}
 
 }
 

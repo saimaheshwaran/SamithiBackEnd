@@ -12,7 +12,6 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Builder
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-
 public class Contact {
 
     @Id
@@ -34,4 +33,5 @@ public class Contact {
 
     @CreatedDate
     private LocalDateTime createdDate;
+
 }

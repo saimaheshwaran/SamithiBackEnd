@@ -1,6 +1,5 @@
 package com.sai.samithi.contact;
 
-
 import lombok.Data;
 
 @Data
