@@ -7,7 +7,8 @@ import java.time.LocalDateTime;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Builder
 @Entity
@@ -23,7 +24,7 @@ public class Contact {
 
     private String email;
 
-    private String phone;
+    private String phoneNumber;
 
     private String subject;
 

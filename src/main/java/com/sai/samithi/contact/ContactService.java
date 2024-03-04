@@ -23,7 +23,7 @@ public class ContactService {
     	Contact contactDB = Contact.builder()
     	.name(contactDto.name())
     	.message(contactDto.message())
-    	.phone(contactDto.phoneNumber())
+    	.phoneNumber(contactDto.phoneNumber())
     	.email(contactDto.email())
     	.subject(contactDto.subject())
     	.status(Status.TBD)
