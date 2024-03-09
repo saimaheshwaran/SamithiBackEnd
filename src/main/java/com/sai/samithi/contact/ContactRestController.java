@@ -20,7 +20,7 @@ public class ContactRestController {
     }
 
     @GetMapping
-    public List<Contact> getAll() {
+    public List<ContactResponse> getAll() {
         return contactService.getAll();
     }
 

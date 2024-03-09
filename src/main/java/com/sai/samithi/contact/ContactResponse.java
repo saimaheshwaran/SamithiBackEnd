@@ -1,5 +1,6 @@
 package com.sai.samithi.contact;
 
+import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
@@ -17,5 +18,7 @@ public class ContactResponse {
     private String message;
     
     private Status status;
+    
+    private LocalDateTime createdDate;
 
 }

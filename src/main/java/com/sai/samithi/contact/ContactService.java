@@ -5,8 +5,8 @@ import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @Service
@@ -30,13 +30,16 @@ public class ContactService {
     	.build();
     	
     	Contact contact = contactRepository.save(contactDB);
-        
-    	mapper.map(contact, ContactResponse.class);
         return mapper.map(contact, ContactResponse.class);
     }
 
-	public List<Contact> getAll() {
-		return contactRepository.findAll();
+	public List<ContactResponse> getAll() {
+	 	List<Contact> contacts = contactRepository.findAll();
+	 	List<ContactResponse> contactResponses = contacts
+	 			.stream()
+	 			.map( contact -> mapper.map(contact, ContactResponse.class))
+	 			.collect(Collectors.toList());
+		return contactResponses;
 	}
 
 }
