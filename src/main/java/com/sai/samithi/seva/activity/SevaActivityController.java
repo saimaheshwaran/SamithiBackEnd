@@ -1,4 +1,4 @@
-package com.sai.samithi.faq;
+package com.sai.samithi.seva.activity;
 
 import java.util.List;
 
@@ -12,20 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/faq")
-public class FaqController {
+@RequestMapping("/seva-activity")
+public class SevaActivityController {
 
-	@Autowired
-    FaqService faqService;
+    @Autowired
+    SevaActivityService sevaActivityService;
 
     @PostMapping
-    public FaqResponse saveContact(@RequestBody @Valid FaqRequest faqRequest) {
-        return faqService.add(faqRequest);
+    public SevaActivityResponse addSevaActivity(@RequestBody @Valid SevaActivityRequest sevaActivityRequest) {
+    
+        return sevaActivityService.addSevaActivity(sevaActivityRequest);
     }
 
     @GetMapping
-    public List<FaqResponse> getAll() {
-        return faqService.getAll();
+    public List<SevaActivityResponse> getSevaActivities() {             
+        return sevaActivityService.getAll();
     }
 
 }

@@ -1,4 +1,4 @@
-package com.sai.samithi.faq;
+package com.sai.samithi.youth.calender;
 
 import java.util.List;
 
@@ -12,20 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/faq")
-public class FaqController {
+@RequestMapping("/youth-schedule")
+public class YouthScheduleController {
 
-	@Autowired
-    FaqService faqService;
+    @Autowired
+    YouthScheduleService youthScheduleService;
 
     @PostMapping
-    public FaqResponse saveContact(@RequestBody @Valid FaqRequest faqRequest) {
-        return faqService.add(faqRequest);
+    public YouthScheduleResponse addyouthScheduleSchedule(@RequestBody @Valid YouthScheduleRequest youthScheduleRequest) {
+    
+        return youthScheduleService.add(youthScheduleRequest);
     }
 
     @GetMapping
-    public List<FaqResponse> getAll() {
-        return faqService.getAll();
+    public List<YouthScheduleResponse> getyouthScheduleSchedules() {             
+        return youthScheduleService.getAll();
     }
 
 }

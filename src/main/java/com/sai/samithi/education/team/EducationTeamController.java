@@ -1,4 +1,4 @@
-package com.sai.samithi.faq;
+package com.sai.samithi.education.team;
 
 import java.util.List;
 
@@ -12,20 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/faq")
-public class FaqController {
+@RequestMapping("/education-team")
+public class EducationTeamController {
 
-	@Autowired
-    FaqService faqService;
+    @Autowired
+    EducationTeamService educationActivityService;
 
     @PostMapping
-    public FaqResponse saveContact(@RequestBody @Valid FaqRequest faqRequest) {
-        return faqService.add(faqRequest);
+    public EducationTeamResponse add(@RequestBody @Valid EducationTeamRequest educationActivityRequest) {
+    
+        return educationActivityService.add(educationActivityRequest);
     }
 
     @GetMapping
-    public List<FaqResponse> getAll() {
-        return faqService.getAll();
+    public List<EducationTeamResponse> getAll() {             
+        return educationActivityService.getAll();
     }
 
 }

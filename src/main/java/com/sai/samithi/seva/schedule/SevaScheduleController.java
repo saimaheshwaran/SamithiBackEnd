@@ -1,4 +1,4 @@
-package com.sai.samithi.faq;
+package com.sai.samithi.seva.schedule;
 
 import java.util.List;
 
@@ -12,20 +12,21 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/faq")
-public class FaqController {
+@RequestMapping("/seva-schedule")
+public class SevaScheduleController {
 
-	@Autowired
-    FaqService faqService;
+    @Autowired
+    SevaScheduleService sevaScheduleService;
 
     @PostMapping
-    public FaqResponse saveContact(@RequestBody @Valid FaqRequest faqRequest) {
-        return faqService.add(faqRequest);
+    public SevaScheduleResponse addsevaScheduleSchedule(@RequestBody @Valid SevaScheduleRequest sevaScheduleRequest) {
+    
+        return sevaScheduleService.add(sevaScheduleRequest);
     }
 
     @GetMapping
-    public List<FaqResponse> getAll() {
-        return faqService.getAll();
+    public List<SevaScheduleResponse> getsevaScheduleSchedules() {             
+        return sevaScheduleService.getAll();
     }
 
 }
