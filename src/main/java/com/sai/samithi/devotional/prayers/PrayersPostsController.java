@@ -1,4 +1,4 @@
-package com.sai.samithi.home.posts;
+package com.sai.samithi.devotional.prayers;
 
 import java.util.List;
 
@@ -15,19 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/posts")
-public class PostsController {
+@RequestMapping("/devotional-prayers")
+public class PrayersPostsController {
 
     @Autowired
-    PostsService postService;
+    PrayersPostsService postService;
 
     @PostMapping
-    public PostsResponse createPosts(@RequestBody @Valid PostsRequest postsRequest) {
+    public PrayerSPostsResponse createPosts(@RequestBody @Valid PrayersPostsRequest postsRequest) {
         return postService.add(postsRequest);
     }
 
     @GetMapping
-    public List<PostsResponse> getPosts(@RequestParam(defaultValue = "0") int page, Model model) {             
+    public List<PrayerSPostsResponse> getPosts(@RequestParam(defaultValue = "0") int page, Model model) {             
         return postService.getAll();
     }
 

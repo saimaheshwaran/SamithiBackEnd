@@ -1,4 +1,4 @@
-package com.sai.samithi.home.posts;
+package com.sai.samithi.devotional.prayers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,32 +9,32 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class PostsService {
+public class PrayersPostsService {
 
     @Autowired
-    PostsRepository postRepository;
+    PrayersPostsRepository postRepository;
     
     @Autowired
     ModelMapper mapper;
 
-    public PostsResponse add(PostsRequest postsRequest) {
-    	Posts postsDb = Posts.builder()
+    public PrayerSPostsResponse add(PrayersPostsRequest postsRequest) {
+    	PrayersPosts postsDb = PrayersPosts.builder()
     	.description(postsRequest.description())
     	.name(postsRequest.name())
     	.eventDateTime(postsRequest.eventDateTime())
     	.url(postsRequest.url())
     	.publishedOn(LocalDate.now())
     	.build();
-    	Posts posts = postRepository.save(postsDb);
-    	PostsResponse postsResponse = mapper.map(posts, PostsResponse.class);
+    	PrayersPosts posts = postRepository.save(postsDb);
+    	PrayerSPostsResponse postsResponse = mapper.map(posts, PrayerSPostsResponse.class);
     	return postsResponse ;
     }
 
-    public List<PostsResponse> getAll() {
-    	List<Posts> postsDb = postRepository.findAll();
-    	List<PostsResponse> postsResponses = postsDb
+    public List<PrayerSPostsResponse> getAll() {
+    	List<PrayersPosts> postsDb = postRepository.findAll();
+    	List<PrayerSPostsResponse> postsResponses = postsDb
      			.stream()
-     			.map( posts -> mapper.map(posts, PostsResponse.class))
+     			.map( posts -> mapper.map(posts, PrayerSPostsResponse.class))
      			.collect(Collectors.toList());
         return postsResponses;
     }

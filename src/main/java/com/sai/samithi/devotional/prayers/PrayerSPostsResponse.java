@@ -1,4 +1,4 @@
-package com.sai.samithi.home.posts;
+package com.sai.samithi.devotional.prayers;
 
 
 import java.time.LocalDate;
@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 import lombok.Data;
 
 @Data
-public class PostsResponse {
+public class PrayerSPostsResponse {
 	
 	String name;
 	
